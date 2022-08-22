@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../style/customTheme.dart';
+import '../../style/custom_theme.dart';
 
 
 
@@ -34,6 +34,6 @@ class ScheduleCard extends StatelessWidget {
 }
 
 enum ScheduleCardType {
-  Schedule,
-  More,
+  schedule,
+  more,
 }

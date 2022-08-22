@@ -1,36 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../../shared/custom_text_field.dart';
+import '../../style/custom_spacing.dart';
 import '../home/home_schedule_widget.dart';
 import '../home/moreScheduleCard.dart';
 import '../home/scheduleCard.dart';
 
-class FeedPage extends StatelessWidget {
+class FeedPage extends HookWidget {
   const FeedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final todoTitleController = useTextEditingController(text: "");
+    final todoDescriptionController = useTextEditingController(text: "");
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showCupertinoModalBottomSheet(
-            expand: true,
+            expand: false,
             backgroundColor: Theme.of(context).colorScheme.surface,
             context: context,
-            builder: (context) => Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(),
-                const Divider(),
-                Row(
+            builder: (context) => StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) => Padding(
+                padding: const EdgeInsets.all(Spacing.medium),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ElevatedButton(onPressed: () {}, child: Text("Add")),
+                    Text('Add Todo', style: Theme.of(context).textTheme.headlineMedium),
+                    Form(
+                      child: Column(
+                        children: [
+                          CustomTextField(
+                            controller: todoTitleController,
+                            hintText: "Title",
+                          ),
+                          const SizedBox(height: Spacing.medium),
+                          CustomTextField(
+                            controller: todoDescriptionController,
+                            hintText: "Description",
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        const Divider(),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ElevatedButton(onPressed: () {}, child: Text("Add")),
+                          ],
+                        )
+                      ],
+                    ),
                   ],
-                )
-              ],
+                ),
+              ),
             ),
           );
         },
@@ -41,13 +71,13 @@ class FeedPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: Spacing.medium, vertical: Spacing.small),
           child: Column(
             children: [
               buildTopBar(context),
-              const SizedBox(height: 24),
+              const SizedBox(height: Spacing.large),
               const HomeScheduleWidget(),
-              const SizedBox(height: 24),
+              const SizedBox(height: Spacing.large),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -55,9 +85,9 @@ class FeedPage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline5?.copyWith(),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: Spacing.medium),
               buildScheduleCardList(context),
-              const SizedBox(height: 16),
+              const SizedBox(height: Spacing.medium),
             ],
           ),
         ),
@@ -131,3 +161,5 @@ class FeedPage extends StatelessWidget {
     );
   }
 }
+
+

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../style/customTheme.dart';
+import '../../style/custom_theme.dart';
 
 class MoreScheduleCard extends StatelessWidget {
   const MoreScheduleCard({Key? key, required this.numOfSchedule}) : super(key: key);

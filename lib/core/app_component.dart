@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:todos_clean_arch_riverpod/features/calender/calender_page.dart';
 import 'package:todos_clean_arch_riverpod/features/chat/chat_page.dart';
 import 'package:todos_clean_arch_riverpod/features/feed/feed_page.dart';
 
 import '../features/home/home_screen.dart';
 import '../features/setting/SettingPage.dart';
-import '../style/customTheme.dart';
+import '../style/custom_theme.dart';
 
 class AppComponent extends StatelessWidget {
   AppComponent({Key? key}) : super(key: key);

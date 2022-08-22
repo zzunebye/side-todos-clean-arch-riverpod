@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../style/customTheme.dart';
+import '../../style/custom_theme.dart';
 
 class HomeScheduleWidget extends HookConsumerWidget {
   const HomeScheduleWidget({Key? key}) : super(key: key);
